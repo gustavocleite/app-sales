@@ -1,0 +1,18 @@
+
+.custom-table {
+  max-width: 1200px;
+  margin: auto;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.custom-table tbody {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .custom-table {
+    width: 100%;
+  }
+}

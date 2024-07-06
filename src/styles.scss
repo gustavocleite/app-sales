@@ -1,1 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --font-size-base: 16px;
+}
+
+body {
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+}
+/* Estilos para telas pequenas (até 600px) */
+@media (max-width: 600px) {
+  body {
+    font-size: 0.9rem;
+  }
+}
+
+/* Estilos para telas médias (601px a 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 1rem;
+  }
+}
+
+/* Estilos para telas grandes (1025px em diante) */
+@media (min-width: 1025px) {
+  body {
+    font-size: 1.1rem;
+  }
+}
+
+.header {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 0.5rem;
+  }
+}
+nav {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  padding-top: 1%;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+nav button {
+  padding: 1rem;
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: transparent;
+  border: none; /* Remove a borda */
+  cursor: pointer; /* Mostra o cursor de mão ao passar o mouse */
+  color: #fff; /* Cor do texto */
+  border-radius: 1rem;
+}
+.flex-container > div{
+  border: 3px solid #ffcc80;
+  border-radius: 5px;
+  padding: 8px;
+}
