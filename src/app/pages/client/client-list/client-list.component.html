@@ -1,22 +1,22 @@
-<div class="search d-flex align-items-center justify-content-center" style="min-height: 80px;">
+<main class="search d-flex align-items-center justify-content-center" style="min-height: 80px;">
   <form #templateVariableName="ngForm" (ngSubmit)="onSearch()">
     <input class="form-control" type="text" type="text" placeholder="Buscar Cliente pelo nome:" name="name" [(ngModel)]="searchKeyword" >
     <span (click)="onSearch()">
     </span>
   </form>
   <br>
-</div>
+</main>
   <br>
 <nav>
-<div *ngIf="clientDatas">
-  <div>
-    <button class="btn btn-primary" (click)="onSubmit()">Buscar todos clientes
-    </button>
-    <button class="btn btn-primary" (click)="clearResults()">Limpar resultados
-    </button>
-  <br>
-  </div>
-</div>
+  <main *ngIf="clientDatas">
+    <article>
+      <button class="btn btn-primary" (click)="onSubmit()">Buscar todos clientes
+      </button>
+      <button class="btn btn-primary" (click)="clearResults()">Limpar resultados
+      </button>
+    <br>
+    </article>
+  </main>
 </nav>
 <br>
 
