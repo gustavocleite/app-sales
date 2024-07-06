@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Subject } from 'rxjs';
-import { ServicesService } from '../services/services.service';
 import { ClientDatas } from '../models/client-datas';
+import { ClientService } from '../services/client.service';
 
 @Component({
   selector: 'app-client-list',
@@ -14,7 +14,7 @@ export class ClientListComponent {
   clientDatas: ClientDatas[] = [];
   searchKeyword: string = '';
 
-  constructor(private ClientService: ServicesService) {}
+  constructor(private ClientService: ClientService) {}
 
   ngOnInit(): void {
     this.getClientDatasService();

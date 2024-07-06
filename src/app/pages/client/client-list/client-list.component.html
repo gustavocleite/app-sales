@@ -1,47 +1,47 @@
-<main class="search d-flex align-items-center justify-content-center" style="min-height: 80px;">
-  <form #templateVariableName="ngForm" (ngSubmit)="onSearch()">
-    <input class="form-control" type="text" type="text" placeholder="Buscar Cliente pelo nome:" name="name" [(ngModel)]="searchKeyword" >
-    <span (click)="onSearch()">
-    </span>
-  </form>
+
+<main>
+  <article class="search d-flex align-items-center justify-content-center" style="min-height: 80px;">
+    <form #templateVariableName="ngForm" (ngSubmit)="onSearch()">
+      <input class="form-control" type="text" type="text" placeholder="Buscar Cliente pelo nome:" name="name" [(ngModel)]="searchKeyword" >
+      <span (click)="onSearch()">
+      </span>
+    </form>
+  </article>
+
+  <article *ngIf="clientDatas">
+        <button class="btn btn-primary" (click)="onSubmit()">Buscar todos clientes
+          </button>
+        <button class="btn btn-primary" (click)="clearResults()">Limpar resultados
+          </button>
+  </article>
+
   <br>
+
+  <article class="main-item">
+    <div class="table-container">
+      <table class="table table-hover custom-table">
+        <thead>
+          <tr>
+            <th scope="col">CPF</th>
+            <th scope="col">Nome</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Data de Aniversário</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let clientItem of clientDatas">
+            <td>{{ clientItem.cpf | cpf }}</td>
+            <td>{{ clientItem.name }}</td>
+            <td>{{ clientItem.email }}</td>
+            <td>{{ clientItem.dateOfBirth }}</td>
+            <td>{{ clientItem.isDeleted ? 'sim' : 'não' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
 </main>
-  <br>
-<nav>
-  <main *ngIf="clientDatas">
-    <article>
-      <button class="btn btn-primary" (click)="onSubmit()">Buscar todos clientes
-      </button>
-      <button class="btn btn-primary" (click)="clearResults()">Limpar resultados
-      </button>
-    <br>
-    </article>
-  </main>
-</nav>
-<br>
-
-<table class="table table-hover custom-table" style="min-height: 1%;">
-  <thead>
-    <tr>
-      <th scope="col">CPF</th>
-      <th scope="col">Nome</th>
-      <th scope="col">E-mail</th>
-      <th scope="col">Data de Aniversário</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr *ngFor="let clientItem of clientDatas">
-      <td>{{ clientItem.cpf }}</td>
-      <td>{{ clientItem.name }}</td>
-      <td>{{ clientItem.email }}</td>
-      <td>{{ clientItem.dateOfBirth }}</td>
-      <td>{{ clientItem.isDeleted ? 'sim' : 'não' }}</td>
-    </tr>
-  </tbody>
-</table>
-
 
 
 

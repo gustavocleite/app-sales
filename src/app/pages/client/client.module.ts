@@ -5,17 +5,24 @@ import { ClientRoutingModule } from './client-routing.module';
 import { ClientListComponent } from './client-list/client-list.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CpfPipe } from 'src/app/pipes/cpf.pipe';
+import { ClientRegisterComponent } from './client-register/client-register.component';
+import { CpfFormatDirective } from 'src/app/util/cpf-format.directive';
+
 
 
 @NgModule({
   declarations: [
-    ClientListComponent
+    ClientListComponent,
+    CpfPipe,
+    ClientRegisterComponent,
+    CpfFormatDirective
   ],
   imports: [
     CommonModule,
     ClientRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ]
 })
 export class ClientModule { }

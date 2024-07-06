@@ -1,0 +1,48 @@
+<nav  id="liveAlert" *ngIf="mostrarMensagem" class="alert alert-success" role="alert" [ngClass]="{'alert': true, 'alert-success': sucesso, 'alert-danger': !sucesso}">
+  {{ mensagem }}
+</nav>
+
+<h1 class="d-flex justify-content-center mt-5">Cadastro de Cliente</h1>
+
+<main class="d-flex align-items-center justify-content-center" style="min-height: 300px;">
+
+  <article class="col-md-4">
+    <form (ngSubmit)="onSubmitPosT()">
+      <article class="input-group mb-3">
+        <span class="input-group-text">CPF</span>
+        <input type="text" aria-label="cpf" placeholder="CPF" class="form-control" [(ngModel)]="newClient.cpf" name="cpf" required appCpfFormat>
+      </article>
+
+    <article class="input-group mb-3">
+      <span class="input-group-text">Nome</span>
+      <input type="text" aria-label="name" placeholder="Seu nome completo" class="form-control" [(ngModel)]="newClient.name" name="name" required>
+    </article>
+
+    <article class="input-group mb-3">
+      <span class="input-group-text" id="addon-wrapping">&#64;Email</span>
+      <input type="text" class="form-control" placeholder="seu@email.com.br" aria-label="email" aria-describedby="addon-wrapping" [(ngModel)]="newClient.email" name="email" required>
+    </article>
+
+    <article class="input-group mb-3">
+      <span class="input-group-text" id="addon-wrapping">Data de nascimento</span>
+      <input
+          type="text"
+          class="form-control"
+
+          placeholder="dd/mm/yyyy"
+          maxlength="10"
+          (keyup)="formatDate($event)"
+          (blur)="validateDate($event)" [(ngModel)]="newClient.dateOfBirth" name="dateOfBirth">
+      <span class="input-group-addon">
+          <i class="glyphicon glyphicon-calendar"></i>
+      </span>
+    </article>
+
+    <article class="text-center">
+      <button class="btn btn-primary" type="submit">Cadastrar</button>
+
+    </article>
+  </form>
+  </article>
+</main>
+

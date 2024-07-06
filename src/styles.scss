@@ -44,25 +44,7 @@ body {
     padding: 0.5rem;
   }
 }
-nav {
-  display: flex;
-  flex-grow: 1;
-  flex-wrap: wrap;
-  padding-top: 1%;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-}
-nav button {
-  padding: 1rem;
-  margin: 0 10px;
-  padding: 10px 20px;
-  background-color: transparent;
-  border: none; /* Remove a borda */
-  cursor: pointer; /* Mostra o cursor de mão ao passar o mouse */
-  color: #fff; /* Cor do texto */
-  border-radius: 1rem;
-}
+
 .flex-container > div{
   border: 3px solid #ffcc80;
   border-radius: 5px;

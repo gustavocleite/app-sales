@@ -1,27 +1,10 @@
-
-.custom-table {
-  max-width: 1200px;
-  margin: auto;
-  max-height: 300px;
-  overflow-y: auto;
-}
-
-.custom-table tbody {
-  max-height: 300%;
-  overflow-y: auto;
-}
-
-@media (max-width: 768px) {
-  .custom-table {
-    width: 100%;
-  }
-}
 main {
   justify-content: center;
   align-items: center; /* Centraliza verticalmente */
   min-height: auto; /* Garante que ocupe a altura total da viewport */
   background-color: #f0f0f0; /* Cor de fundo para destacar */
 }
+
 .main-item {
   background-color: #ffffff;
   padding: 15px;
@@ -29,17 +12,11 @@ main {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center; /* Centraliza o texto */
 }
-
-.table-container {
-  overflow: hidden;
-  border-radius: 8%;
-}
 article {
   display: flex;
   flex-grow: 1;
   flex-wrap: wrap;
   padding-top: 1%;
-  gap: 20px;
   justify-content: center;
   align-items: center;
 }
