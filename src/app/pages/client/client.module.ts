@@ -9,6 +9,7 @@ import { CpfPipe } from 'src/app/pipes/cpf.pipe';
 import { ClientRegisterComponent } from './client-register/client-register.component';
 import { CpfFormatDirective } from 'src/app/util/cpf-format.directive';
 import { ClientAlterComponent } from './client-alter/client-alter.component';
+import { AppDateFormatDirective } from 'src/app/util/app-date-format.directive';
 
 
 
@@ -18,7 +19,8 @@ import { ClientAlterComponent } from './client-alter/client-alter.component';
     CpfPipe,
     ClientRegisterComponent,
     CpfFormatDirective,
-    ClientAlterComponent
+    ClientAlterComponent,
+    AppDateFormatDirective
   ],
   imports: [
     CommonModule,

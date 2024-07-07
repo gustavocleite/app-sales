@@ -1,34 +1,40 @@
-<nav  id="liveAlert" *ngIf="mostrarMensagem" class="alert alert-success" role="alert" [ngClass]="{'alert': true, 'alert-success': sucesso, 'alert-danger': !sucesso}">
+<nav id="liveAlert" *ngIf="mostrarMensagem" class="alert" [ngClass]="{'alert-success': sucesso, 'alert-danger': !sucesso}" role="alert">
   {{ mensagem }}
 </nav>
 
 <main class="container">
-  <label>Selecione um Cliente:</label>
-  <select class="form-select" [(ngModel)]="selectedClient" (ngModelChange)="onClientSelectionChange()" required>
-    <option *ngFor="let client of clientDatas" [ngValue]="client">{{ client.name }}</option>
-  </select>
+  <label>Buscar Cliente pelo CPF para poder alterar:</label>
+  <br>
+  <form #templateVariableName="ngForm" (ngSubmit)="onSearch()">
+    <input class="form-control" type="text" placeholder="Buscar Cliente pelo CPF:" name="cpf" [(ngModel)]="searchKeyword" appCpfFormat required>
+    <button type="submit" class="btn btn-primary">Buscar</button>
+    <button type="button" class="btn btn-secondary" (click)="onClear()">Limpar</button>
+  </form>
 
-<br>
+  <br>
 
-<article *ngIf="selectedClient && mostrarCamposInput">
-  <h3>Detalhes do cliente Selecionado:</h3>
+  <article *ngIf="selectedClient && mostrarCamposInput">
+    <h3>Detalhes do cliente Selecionado:</h3>
 
-  <p>
-    CPF:
-    <input type="text" class="form-control" [ngModel]="selectedClient.cpf" name="cpf" disabled>
-  </p>
+    <p>
+      CPF:
+      <input type="text" class="form-control" [ngModel]="selectedClient.cpf" name="cpf" disabled>
+    </p>
 
     <p>
       Nome:
-      <input type="text" class="form-control" [(ngModel)]="selectedClient.name" name="name"  required >
+      <input type="text" class="form-control" [(ngModel)]="selectedClient.name" name="name" required>
     </p>
 
     <p>
       E-mail: <input type="text" class="form-control" [(ngModel)]="selectedClient.email" name="email" required>
     </p>
+
     <p>
-      Data Aniversario: <input type="tel" class="form-control" [(ngModel)]="selectedClient.dateOfBirth" name="dateOfBirth"/>
+      Data Aniversário: <input type="tel" class="form-control" [(ngModel)]="selectedClient.dateOfBirth" name="dateOfBirth" required>
     </p>
+    <form>
     <button class="btn btn-primary" (click)="atualizarClient()">Alterar</button>
+  </form>
   </article>
 </main>

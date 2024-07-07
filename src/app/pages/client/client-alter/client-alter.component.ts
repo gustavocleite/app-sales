@@ -12,68 +12,98 @@ import { CpfPipe } from 'src/app/pipes/cpf.pipe';
 
 export class ClientAlterComponent implements OnInit {
 
-  constructor(private clientService: ClientService) {}
+ constructor(private clientService: ClientService) {}
 
   private readonly destroy$: Subject<void> = new Subject();
 
   clientDatas: ClientDatas[] = [];
-  selectedClient!: ClientDatas;
-  mostrarCamposInput: boolean = true;
+  selectedClient?: ClientDatas; // Permitir valores undefined
+  mostrarCamposInput: boolean = false;
   mostrarMensagem: boolean = false;
   sucesso: boolean = false;
   mensagem: string = '';
+  searchKeyword: string = '';
 
   ngOnInit(): void {
     this.clientService.getClientDatas().subscribe(client => {
       this.clientDatas = client;
     });
-
   }
 
   getClientDatas(): void {
     this.clientService.getClientDatas().subscribe(
       (data: ClientDatas[]) => {
         this.clientDatas = data;
-
       },
     );
   }
 
-  onClientSelectionChange() {
-    this.selectedClient
+  atualizarClient(): void {
+    if (this.selectedClient) {
+      this.clientService.putClient(this.selectedClient)
+      .subscribe(
+        () => {
+          console.log('Cliente atualizado com sucesso!');
+          this.mostrarMensagem = true;
+          this.sucesso = true;
+          this.mensagem = 'Cliente alterado com sucesso!';
+          setTimeout(() => {
+            this.mostrarMensagem = false;
+            // this.reloadPage();
+          }, 5000);
+          this.mostrarCamposInput = false;
+        },
+        (error: any) => {
+          this.mostrarMensagem = true;
+          this.sucesso = false;
+          this.mensagem = 'Erro ao alterar Cliente, tente novamente!';
+          setTimeout(() => {
+            this.mostrarMensagem = false;
+          }, 5000);
+          this.mostrarCamposInput = true;
+         }
+      );
+    }
   }
 
-   atualizarClient(): void {
-    // Chama o método putLoja do serviço, passando a loja selecionada
-    this.clientService.putClient(this.selectedClient)
-    .subscribe(
-      () => {
-        console.log('Cliente atualizado com sucesso!');
-        this.mostrarMensagem = true;
-        this.sucesso = true;
-        this.mensagem = 'Cliente alterado com sucesso!';
-        setTimeout(() => {
-          this.mostrarMensagem = false;
-          this.reloadPage();
-        }, 5000);
-        this.mostrarCamposInput = false;
-      },
-      (error: any) => {
-        this.mostrarMensagem = true;
-        this.sucesso = false;
-        this.mensagem = 'Erro ao alterar Cliente, tente novamente!';
-        setTimeout(() => {
-          this.mostrarMensagem = false;
-        }, 5000);
-       }
-    );
+  onSearch(): void {
+    if (this.searchKeyword.trim() === '') {
+      this.selectedClient = undefined;
+      this.mostrarCamposInput = false;
+    } else {
+      this.clientService.getClientDatas().subscribe({
+        next: (response) => {
+          const foundClient = response.find(client =>
+            client.cpf.toLowerCase().includes(this.searchKeyword.toLowerCase())
+          );
+          if (foundClient) {
+            this.selectedClient = foundClient;
+            this.mostrarCamposInput = true;
+          } else {
+            this.selectedClient = undefined;
+            this.mostrarMensagem = true;
+            this.sucesso = false;
+            this.mensagem = 'Cliente não encontrado!';
+            setTimeout(() => {
+              this.mostrarMensagem = false;
+            }, 5000);
+            this.mostrarCamposInput = false;
+          }
+        },
+        error: (error: any) => console.log(error),
+      });
+    }
+  }
+
+  onClear(): void {
+    this.searchKeyword = '';
+    this.selectedClient = undefined;
+    this.mostrarCamposInput = false;
   }
 
   reloadPage() {
     window.location.reload();
   }
 }
-function takeUntil(destroy$: Subject<void>): import("rxjs").OperatorFunction<ClientDatas[], unknown> {
-  throw new Error('Function not implemented.');
-}
+
 

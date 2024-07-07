@@ -16,27 +16,27 @@ export class ClientRegisterComponent {
   sucesso: boolean = false;
   mensagem: string = '';
 
-clienteDatas: ClientDatas[] = [];
-newClient: ClientDatas = {
-  id: -1,
-  cpf: '',
-  name: '',
-  email: '',
-  dateOfBirth: '',
-  isDeleted: false
-}
-
-formatDateForBackend(date: string): string {
-  const parts = date.split('/');
-  if (parts.length === 3) {
-    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+  clientDatas: ClientDatas[] = [];
+  newClient: ClientDatas = {
+    id: -1,
+    cpf: '',
+    name: '',
+    email: '',
+    dateOfBirth: '',
+    isDeleted: false
   }
-  return '';
-}
+
+  formatDateForBackend(date: string): string {
+    const parts = date.split('/');
+    if (parts.length === 3) {
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+    return '';
+  }
 
   onSubmitPosT(): void {
     console.log("Data depois de formatar" + this.newClient.dateOfBirth)
-    this.clientService?.postClient(this.newClient)
+    this.clientService.postClient(this.newClient)
     .subscribe({
       next: (response: any) => {
         console.log('Cliente inserido com sucesso!', response);
@@ -65,28 +65,6 @@ formatDateForBackend(date: string): string {
         }, 5000);
       }
     })
-  }
-
-
-  formatDate(event: any) {
-    let input = event.target.value;
-    input = input.replace(/\D/g, '');
-    // Formata para dd/mm/yyyy
-    if (input.length > 4) {
-        input = input.replace(/(\d{2})(\d{2})(\d{0,4})/, '$1/$2/$3');
-    } else if (input.length > 2) {
-        input = input.replace(/(\d{2})(\d{0,2})/, '$1/$2');
-    }
-    event.target.value = input;
-  }
-
-
-  validateDate(event: any) {
-    let input = event.target.value;
-    if (input.length !== 10) {
-        alert('Data de aniversário inválida. Por favor, insira no formato dd/mm/yyyy.');
-        event.target.value = '';
-    }
   }
 
 }
