@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CpfPipe } from 'src/app/pipes/cpf.pipe';
 import { ClientRegisterComponent } from './client-register/client-register.component';
 import { CpfFormatDirective } from 'src/app/util/cpf-format.directive';
+import { ClientAlterComponent } from './client-alter/client-alter.component';
 
 
 
@@ -16,7 +17,8 @@ import { CpfFormatDirective } from 'src/app/util/cpf-format.directive';
     ClientListComponent,
     CpfPipe,
     ClientRegisterComponent,
-    CpfFormatDirective
+    CpfFormatDirective,
+    ClientAlterComponent
   ],
   imports: [
     CommonModule,

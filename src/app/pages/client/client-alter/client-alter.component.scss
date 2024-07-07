@@ -1,0 +1,25 @@
+
+
+article button {
+  padding: 1rem;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none; /* Remove a borda */
+  cursor: pointer; /* Mostra o cursor de mão ao passar o mouse */
+  color: #fff; /* Cor do texto */
+  border-radius: 1rem;
+}
+main {
+  justify-content: center;
+  border-radius: 10px;
+  align-items: center; /* Centraliza verticalmente */
+  min-height: auto; /* Garante que ocupe a altura total da viewport */
+  background-color: #f0f0f0; /* Cor de fundo para destacar */
+}
+.main-item {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Centraliza o texto */
+}
